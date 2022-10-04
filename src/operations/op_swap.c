@@ -10,13 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <push_swap.h>
+
 void	swap(t_stack *stack)
 {
-	t_node	*node1;
-	t_node	*node2;
+	t_node	*tmp;
+
+	tmp = *(stack->top);
+
 
 	node1 = *(stack->top);
 	node2 = node1->next;
+	node1->next = node2->next;
 	node2->next = &node1;
 	*(stack->top) = &node2;
 }

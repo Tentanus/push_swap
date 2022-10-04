@@ -21,12 +21,17 @@ SRC_DIR		:=	./src
 INC_DIR		:=	./include
 LIB_DIR		:=	./lib
 
-SRC			:=	push_swap.c \
-				push_swap_init.c \
+SRC			:=	push_swap/push_swap.c \
+				push_swap/push_swap_init.c \
 				operations/op_swap.c \
 				operations/op_push.c 
 
-OBJ			:=	$(addprefix $(OBJ_DIR)/,$(notdir SRC:.c=.o))
+OBJ			:=	$(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o)))
+
+SRC			:=	$(addprefix $(SRC_DIR)/,$(SRC))
+
+f: 
+	@echo $(SRC)
 
 #============== LIBRARIES ===============#
 
@@ -86,7 +91,7 @@ test:	$(NAME)
 db: clean
 	@make $(NAME) DB=1
 
-$(OBJ_DIR)/%.o:$(SRC_DIR)/%.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.o:$(SRC_DIR)/*/%.c | $(OBJ_DIR)
 	@$(COMPILE) -o $@ -c $< $(HEADER)
 	@echo "$(CYAN)COMPILING: $(notdir $<) $(RESET)"
 

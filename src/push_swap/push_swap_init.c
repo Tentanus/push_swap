@@ -10,7 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	push_swap_init(char **inp, t_stack a, t_stack b)
+#include <push_swap.h>
+
+int	input_int(char **inp, int argc)
 {
-	
+	int	index;
+	int	n;
+
+	index = 0;
+	n = 0;
+	while (index <= argc)
+	{
+		if (inp[index][0] == '-')
+			n = 1;
+		if (!ft_stris(&(inp[index][n]), ft_isdigit))
+			return (0);
+		n = 0;
+		index++;
+	}
+	return (1);
+}
+
+void	push_swap_init(char **inp, int argc, t_stack *a, t_stack *b)
+{
+	if (argc < 2)
+		return ;
+	a->size = 0;
+	b->size = 0;
+	if (input_int(inp, argc))
+		return ;
 }

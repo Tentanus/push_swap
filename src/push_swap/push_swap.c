@@ -18,8 +18,7 @@ int	main(int argc, char **argv)
 	t_stack	b;
 
 	if (argc < 1)
-		return (0);
-	if (push_spaw_init((argv + 1), &a, &b))
-		return (0);
-	return (1);
+		return (1);
+	push_swap_init((argv + 1), --argc, &a, &b);
+	return (0);
 }

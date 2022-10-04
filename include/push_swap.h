@@ -16,6 +16,7 @@
 // INCLUDES
 
 # include <stdlib.h>
+# include <libft.h>
 
 // MACROS
 
@@ -30,10 +31,12 @@ typedef struct s_node {
 typedef struct s_stack {
 	char	name;
 	t_node	**top;
-	size_t	size_stack;
-}i	t_stack;
+	size_t	size;
+}	t_stack;
 
 // FUNCTIONS
+
+void	push_swap_init(char **inp, int argc, t_stack *a, t_stack *b);
 
 #endif
 
