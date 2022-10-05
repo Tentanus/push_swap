@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   op_push.c                                          :+:    :+:            */
+/*   op_rotate.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/03 16:45:50 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/05 18:48:32 by mweverli      ########   odam.nl         */
+/*   Created: 2022/10/05 18:48:53 by mweverli      #+#    #+#                 */
+/*   Updated: 2022/10/05 20:25:58 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+#include <list_utils.h>
 
-void	push(t_stack *from, t_stack *to)
+void	rotate(t_stack *stk)
 {
-	t_node	*node1;
-	t_node	*node2;
-
-	node1 = from->top;
-	node2 = node1->next;
-	node1->next = to->top;
-	to->top = node1;
-	from->top = node2;
+	
 }

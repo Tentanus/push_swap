@@ -23,8 +23,10 @@ LIB_DIR		:=	./lib
 
 SRC			:=	push_swap/push_swap.c \
 				push_swap/push_swap_init.c \
+				push_swap/list_utils.c \
 				operations/op_swap.c \
-				operations/op_push.c 
+				operations/op_push.c
+
 
 OBJ			:=	$(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o)))
 

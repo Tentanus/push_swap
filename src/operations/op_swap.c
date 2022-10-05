@@ -6,24 +6,25 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 14:25:58 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/03 15:42:26 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/05 17:58:57 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+#include <op_utils.h>
 
 void	swap(t_stack *stack)
 {
-	t_node	*tmp;
+	t_node	*node1;
+	t_node	*node2;
+	t_node	*node3;
 
-	tmp = *(stack->top);
-
-
-	node1 = *(stack->top);
+	node1 = stack->top;
 	node2 = node1->next;
-	node1->next = node2->next;
-	node2->next = &node1;
-	*(stack->top) = &node2;
+	node3 = node2->next;
+	stack->top = node2;
+	node2->next = node1;
+	node1->next = node3;
 }
 
 void	swapswap(t_stack *stack_1, t_stack *stack_2)

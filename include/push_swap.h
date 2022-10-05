@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/01 17:59:48 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/03 15:46:22 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/05 17:58:55 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_node {
 
 typedef struct s_stack {
 	char	name;
-	t_node	**top;
+	t_node	*top;
 	size_t	size;
 }	t_stack;
 
@@ -52,5 +52,8 @@ void	push_swap_init(char **inp, int argc, t_stack *a, t_stack *b);
  * malloc free		stdlib.h
  * exit				stdlib.h
  *
+ *
+ * datastructure:
+ * stacks consist of a linkd list of t_nodes
  *
  */
