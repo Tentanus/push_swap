@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/01 17:59:48 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/05 17:58:55 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/06 16:43:55 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 // INCLUDES
 
 # include <stdlib.h>
-# include <libft.h>
 
 // MACROS
 
@@ -37,6 +36,9 @@ typedef struct s_stack {
 // FUNCTIONS
 
 void	push_swap_init(char **inp, int argc, t_stack *a, t_stack *b);
+
+// LIB FUNCTIONS
+int		ft_printf(const char *str, ...);
 
 #endif
 

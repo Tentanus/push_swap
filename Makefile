@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/01 17:54:19 by mweverli      #+#    #+#                  #
-#    Updated: 2022/10/03 17:58:17 by mweverli      ########   odam.nl          #
+#    Updated: 2022/10/06 16:48:25 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,17 +23,17 @@ LIB_DIR		:=	./lib
 
 SRC			:=	push_swap/push_swap.c \
 				push_swap/push_swap_init.c \
-				push_swap/list_utils.c \
+				utils/list_utils.c \
 				operations/op_swap.c \
 				operations/op_push.c
-
 
 OBJ			:=	$(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o)))
 
 SRC			:=	$(addprefix $(SRC_DIR)/,$(SRC))
 
-f: 
-	@echo $(SRC)
+TEST		:=	tester/tester.c
+TEST		:=	$(addprefix $(SRC_DIR)/,$(TEST))
+EXE			:=	push_test
 
 #============== LIBRARIES ===============#
 
@@ -41,12 +41,8 @@ LIBFT		:=	libft
 LIB_LIBFT	:=	$(LIB_DIR)/$(LIBFT)
 LIB_LIB_ARC	:=	$(LIB_LIBFT)/$(LIBFT).a
 
-PINT		:=	printf
-LIB_PINT	:=	$(LIB_DIR)/$(PINT)
-LIB_PINT_ARC:=	$(LIB_PINT)/$(PINT).a
 
-LIB_LIST	:=	$(LIB_LIB_ARC) \
-				$(LIB_PINT_ARC)
+LIB_LIST	:=	$(LIB_LIB_ARC)
 
 #=============== COLOURS ================#
 
@@ -60,7 +56,6 @@ RESET	:= \033[0m
 
 HEADER		:=	-I $(INC_DIR) \
 				-I $(LIB_LIBFT)/include \
-				-I $(LIB_PINT)
 
 LIB			:=
 
@@ -87,21 +82,15 @@ $(NAME): $(LIB_LIST) $(OBJ)
 	@$(COMPILE) $^ $(HEADER) -o $(NAME) $(LIB) $(LIB_LIST) 
 	@echo "$(CYAN)$(BOLD)COMPILING COMPLETE$(RESET)"
 
-test:	$(NAME)
-	@echo "$(CYAN)$(BOLD) RUNNING ./$(NAME)$(RESET)"
-
-db: clean
-	@make $(NAME) DB=1
-
 $(OBJ_DIR)/%.o:$(SRC_DIR)/*/%.c | $(OBJ_DIR)
 	@$(COMPILE) -o $@ -c $< $(HEADER)
-	@echo "$(CYAN)COMPILING: $(notdir $<) $(RESET)"
+	@echo "$(CYAN)COMPILING: $(notdir $<)$(RESET)"
 
 flclean: lclean fclean
 
 lclean:
 	@make -C $(LIB_LIBFT) clean
-	@make -C $(LIB_PINT) clean
+	$(RM) $(LIB_LIB_ARC)
 
 clean:
 	@mkdir -p $(OBJ_DIR)
@@ -110,13 +99,19 @@ clean:
 
 fclean: clean 
 	@rm -f $(NAME)
-	@rm -f $(LIB_LIB_ARC)
-	@rm -f $(LIB_PINT_ARC)
+
+re: fclean all
+
+arch: $(LIB_LIST) $(OBJ)
+	@ar rcs $(OBJ_DIR)/push_swap.a $^
+
+test:	arch 
+	$(CC) $(CFL) $(TEST) $(OBJ_DIR)/push_swap.a $(HEADER) -o $(EXE)
+	@echo "$(CYAN)$(BOLD) RUNNING ./$(NAME)$(RESET)"
+	./$(EXE)
 
 tclean: fclean
 	rm -f $(EXE)
-
-re: fclean all
 
 #========================================#
 #============== LIBRARIES ===============#
@@ -124,9 +119,6 @@ re: fclean all
 
 $(LIB_LIB_ARC):
 	@make -C $(LIB_LIBFT)
-
-$(LIB_PINT_ARC):
-	@make -C $(LIB_PINT)
 
 #========================================#
 #============ MISCELLANEOUS =============#

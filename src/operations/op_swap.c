@@ -6,12 +6,11 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 14:25:58 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/05 17:58:57 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/06 12:09:01 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-#include <op_utils.h>
 
 void	swap(t_stack *stack)
 {
