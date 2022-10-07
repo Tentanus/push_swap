@@ -6,11 +6,12 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:48:51 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/03 17:56:28 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/07 15:11:07 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+#include <libft.h>
 
 int	input_int(char **inp, int argc)
 {

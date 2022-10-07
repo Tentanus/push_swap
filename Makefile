@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/01 17:54:19 by mweverli      #+#    #+#                  #
-#    Updated: 2022/10/06 16:48:25 by mweverli      ########   odam.nl          #
+#    Updated: 2022/10/07 15:11:09 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,11 +21,17 @@ SRC_DIR		:=	./src
 INC_DIR		:=	./include
 LIB_DIR		:=	./lib
 
-SRC			:=	push_swap/push_swap.c \
-				push_swap/push_swap_init.c \
+SRC			:=	push_swap/push_swap_init.c \
 				utils/list_utils.c \
 				operations/op_swap.c \
 				operations/op_push.c
+
+ifndef TEST
+	SRC += push_swap/push_swap.c
+else
+	SRC += tester/tester.c
+endif
+
 
 OBJ			:=	$(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o)))
 
@@ -55,7 +61,7 @@ RESET	:= \033[0m
 #============= COMPILATION ==============#
 
 HEADER		:=	-I $(INC_DIR) \
-				-I $(LIB_LIBFT)/include \
+				-I $(LIB_LIBFT)/include 
 
 LIB			:=
 
@@ -90,7 +96,7 @@ flclean: lclean fclean
 
 lclean:
 	@make -C $(LIB_LIBFT) clean
-	$(RM) $(LIB_LIB_ARC)
+	@$(RM) $(LIB_LIB_ARC)
 
 clean:
 	@mkdir -p $(OBJ_DIR)
@@ -101,14 +107,6 @@ fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all
-
-arch: $(LIB_LIST) $(OBJ)
-	@ar rcs $(OBJ_DIR)/push_swap.a $^
-
-test:	arch 
-	$(CC) $(CFL) $(TEST) $(OBJ_DIR)/push_swap.a $(HEADER) -o $(EXE)
-	@echo "$(CYAN)$(BOLD) RUNNING ./$(NAME)$(RESET)"
-	./$(EXE)
 
 tclean: fclean
 	rm -f $(EXE)
@@ -124,6 +122,6 @@ $(LIB_LIB_ARC):
 #============ MISCELLANEOUS =============#
 #========================================#
 
-.PHONY: all clean fclean tclean re test test_db
+.PHONY: all clean fclean tclean re test
 
 .DEFAULT_GOAL := all
