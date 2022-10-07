@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/01 17:54:19 by mweverli      #+#    #+#                  #
-#    Updated: 2022/10/07 15:11:09 by mweverli      ########   odam.nl          #
+#    Updated: 2022/10/07 19:56:55 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,24 +22,19 @@ INC_DIR		:=	./include
 LIB_DIR		:=	./lib
 
 SRC			:=	push_swap/push_swap_init.c \
-				utils/list_utils.c \
 				operations/op_swap.c \
-				operations/op_push.c
+				operations/op_push.c \
+				utils/list_utils.c
 
 ifndef TEST
-	SRC += push_swap/push_swap.c
+SRC			+=	push_swap/push_swap.c
 else
-	SRC += tester/tester.c
+SRC			+=	tester/tester.c
 endif
-
 
 OBJ			:=	$(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o)))
 
 SRC			:=	$(addprefix $(SRC_DIR)/,$(SRC))
-
-TEST		:=	tester/tester.c
-TEST		:=	$(addprefix $(SRC_DIR)/,$(TEST))
-EXE			:=	push_test
 
 #============== LIBRARIES ===============#
 

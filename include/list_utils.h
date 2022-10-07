@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/05 12:06:26 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/05 18:55:25 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/07 19:31:24 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIST_UTILS_H
 
 // INCLUDES
+
 # include <push_swap.h>
 
 // FUNCTIONS
