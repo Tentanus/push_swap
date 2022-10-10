@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/01 17:54:19 by mweverli      #+#    #+#                  #
-#    Updated: 2022/10/07 19:56:55 by mweverli      ########   odam.nl          #
+#    Updated: 2022/10/10 21:22:01 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ INC_DIR		:=	./include
 LIB_DIR		:=	./lib
 
 SRC			:=	push_swap/push_swap_init.c \
+				push_swap/push_swap_exit.c \
 				operations/op_swap.c \
 				operations/op_push.c \
 				utils/list_utils.c
@@ -29,7 +30,8 @@ SRC			:=	push_swap/push_swap_init.c \
 ifndef TEST
 SRC			+=	push_swap/push_swap.c
 else
-SRC			+=	tester/tester.c
+SRC			+=	tester/test_main.c \
+				tester/test_print.c
 endif
 
 OBJ			:=	$(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o)))
@@ -41,7 +43,6 @@ SRC			:=	$(addprefix $(SRC_DIR)/,$(SRC))
 LIBFT		:=	libft
 LIB_LIBFT	:=	$(LIB_DIR)/$(LIBFT)
 LIB_LIB_ARC	:=	$(LIB_LIBFT)/$(LIBFT).a
-
 
 LIB_LIST	:=	$(LIB_LIB_ARC)
 
@@ -55,20 +56,18 @@ RESET	:= \033[0m
 
 #============= COMPILATION ==============#
 
-HEADER		:=	-I $(INC_DIR) \
-				-I $(LIB_LIBFT)/include 
+HEADER		:=	-I $(INC_DIR)\
+				-I $(LIB_LIBFT)/include
+
+ifdef TEST
+HEADER		+=	-I ./src/tester/include
+endif
 
 LIB			:=
 
 CC			:=	gcc
 CFL			:=	-Wall -Werror -Wextra -g
-CFL_DB		:=	-Wall -Werror -Wextra -fsanitize=address
-
-ifdef DB
-COMPILE		:=	$(CC) $(CFL_DB)
-else
 COMPILE		:=	$(CC) $(CFL)
-endif
 
 #========================================#
 #============== RECIPIES  ===============#
