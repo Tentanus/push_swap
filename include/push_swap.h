@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/01 17:59:48 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/10 21:54:10 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/12 20:49:37 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ typedef struct s_stack {
 
 void	push_swap_init(char **inp, int argc, t_stack *a, t_stack *b);
 void	push_swap_exit(void);
+
+// utils
+void	bub_swap(int *a, int *b);
+int		int_arr_cmp(int *inp, int val, int size);
 
 #endif
 

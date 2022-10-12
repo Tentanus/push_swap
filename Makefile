@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/01 17:54:19 by mweverli      #+#    #+#                  #
-#    Updated: 2022/10/10 21:22:01 by mweverli      ########   odam.nl          #
+#    Updated: 2022/10/12 18:44:12 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ INC_DIR		:=	./include
 LIB_DIR		:=	./lib
 
 SRC			:=	push_swap/push_swap_init.c \
+				push_swap/push_swap_init_utils.c \
 				push_swap/push_swap_exit.c \
 				operations/op_swap.c \
 				operations/op_push.c \

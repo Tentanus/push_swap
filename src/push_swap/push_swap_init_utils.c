@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   list_utils.h                                       :+:    :+:            */
+/*   push_swap_init_utils.c                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/05 12:06:26 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/12 18:41:57 by mweverli      ########   odam.nl         */
+/*   Created: 2022/10/12 14:13:11 by mweverli      #+#    #+#                 */
+/*   Updated: 2022/10/12 20:49:29 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIST_UTILS_H
-# define LIST_UTILS_H
+#include <limits.h>
 
-// INCLUDES
+void	bub_swap(int *a, int *b)
+{
+	int	tmp;
 
-# include <push_swap.h>
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
 
-// FUNCTIONS
+int	int_arr_cmp(int *inp, int val, int size)
+{
+	int	i;
 
-t_node	*stack_last(t_stack *stk);
-int		stack_size(t_stack *stk);
-void	stack_add_front(t_stack *stk, t_node *node);
-void	stack_add_back(t_stack *stk, t_node *node);
-
-#endif
-
-// if stack_add_front not used remove it
+	i = 0;
+	while (i < size)
+	{
+		if (val == inp[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
