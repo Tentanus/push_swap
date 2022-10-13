@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap.c                                        :+:    :+:            */
+/*   stack_check.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/01 17:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/13 20:42:58 by mweverli      ########   odam.nl         */
+/*   Created: 2022/10/13 20:45:29 by mweverli      #+#    #+#                 */
+/*   Updated: 2022/10/13 21:39:23 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+#include <libft.h>
+#include <list_utils.h>
 
-int	main(int argc, char **argv)
+int	check_stack(t_stack *a, t_stack *b)
 {
-	t_stack	a;
-	t_stack	b;
+	int		a_size;
+	t_node	*tmp;
 
-	if (argc < 2)
-		return (1);
-	push_swap_init((argv + 1), (argc - 1), &a, &b);
-	push_swap_sort(&a, &b);
-	return (0);
+	if (b->size == 0)
+		b->top = NULL;
+	if (b->top != NULL)
+		return (0);
+	a_size = stack_size(a) - 1;
+	tmp = a->top;
+	while (a_size)
+	{
+		if (tmp->i_val > tmp->next->i_val)
+			return (0);
+		a_size--;
+		tmp = tmp->next;
+	}
+	return (1);
 }

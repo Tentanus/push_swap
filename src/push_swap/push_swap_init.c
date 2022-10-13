@@ -6,13 +6,12 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:48:51 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/12 20:53:15 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/13 22:01:20 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 #include <list_utils.h>
-#include <libft.h>
 
 int	*bub_sort(int *arr, int size)
 {
@@ -43,12 +42,20 @@ static int	*check_int(char **inp, int argc)
 {
 	int	*arr;
 	int	index;
+	int	i_str;
 
 	arr = ft_calloc(argc, sizeof(int));
 	index = 0;
 	errno = 0;
-	while (argc > index)
+	while (index < argc)
 	{
+		i_str = 0;
+		while (inp[index][i_str])
+		{
+			if (!ft_isdigit(inp[index][i_str]) && inp[index][i_str] != '-')
+				push_swap_exit();
+			i_str++;
+		}
 		arr[index] = ft_atoi(inp[index]);
 		if (errno != 0)
 			push_swap_exit();
@@ -82,6 +89,17 @@ static void	fill_stack(int *inp, int *nor, t_stack *stk, int size)
 		stack_add_back(stk, tmp);
 		i++;
 	}
+	stk->vars.max_int = nor[size - 1];
+}
+
+void	set_val(t_stack *a, t_stack *b)
+{
+	a->name = 'a';
+	b->name = 'b';
+	a->size = 0;
+	b->size = 0;
+	a->top = NULL;
+	b->top = NULL;
 }
 
 void	push_swap_init(char **inp, int argc, t_stack *a, t_stack *b)
@@ -89,13 +107,10 @@ void	push_swap_init(char **inp, int argc, t_stack *a, t_stack *b)
 	int	*arr;
 	int	*nor;
 
-	a->name = 'a';
-	b->name = 'b';
-	a->size = 0;
-	b->size = 0;
+	set_val(a, b);
 	arr = check_int(inp, argc);
 	nor = bub_sort(arr, argc);
 	fill_stack(arr, nor, a, argc);
 	free(arr);
-	ft_printf("push_swap_init FINISHED");
+	free(nor);
 }

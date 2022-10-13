@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/01 17:54:19 by mweverli      #+#    #+#                  #
-#    Updated: 2022/10/12 18:44:12 by mweverli      ########   odam.nl          #
+#    Updated: 2022/10/13 22:33:21 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,14 @@ SRC_DIR		:=	./src
 INC_DIR		:=	./include
 LIB_DIR		:=	./lib
 
-SRC			:=	push_swap/push_swap_init.c \
+SRC			:=	ush_swap/push_swap_exit.c \
+				push_swap/push_swap_init.c \
 				push_swap/push_swap_init_utils.c \
-				push_swap/push_swap_exit.c \
+				push_swap/push_swap_sort.c \
 				operations/op_swap.c \
 				operations/op_push.c \
-				utils/list_utils.c
+				utils/list_utils.c \
+				utils/stack_check.c
 
 ifndef TEST
 SRC			+=	push_swap/push_swap.c
@@ -67,7 +69,7 @@ endif
 LIB			:=
 
 CC			:=	gcc
-CFL			:=	-Wall -Werror -Wextra -g
+CFL			:=	-Wall -Werror -Wextra -g#fsanitize=address
 COMPILE		:=	$(CC) $(CFL)
 
 #========================================#
