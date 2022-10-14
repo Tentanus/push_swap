@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/05 18:48:53 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/13 22:38:33 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/14 18:04:21 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,25 @@
 
 void	rotate(t_stack *stk)
 {
-	if (stk->top = NULL && ft_printf("rotate: %c = NULL\n", stk->name))
+	if (stk->top == NULL && ft_printf("rotate: %c = NULL\n", stk->name))
 		return ;
 	stk->top = stk->top->next;
 }
 
 void	rev_rotate(t_stack *stk)
 {
-	if (stk->top = NULL && ft_printf("rotate: %c = NULL\n", stk->name))
+	if (stk->top == NULL && ft_printf("rotate: %c = NULL\n", stk->name))
 		return ;
 	stk->top = stack_last(stk);
 }
 
-void	rotrot(t_stack *a, t_stack *b);
+void	rotrot(t_stack *a, t_stack *b)
 {
 	rotate(a);
 	rotate(b);
 }
 
-void	rev_rotrot(t_stack *a, t_stack *b);
+void	rev_rotrot(t_stack *a, t_stack *b)
 {
 	rev_rotate(a);
 	rev_rotate(b);

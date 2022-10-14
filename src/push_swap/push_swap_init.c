@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:48:51 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/13 22:01:20 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/14 17:54:52 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,17 +89,28 @@ static void	fill_stack(int *inp, int *nor, t_stack *stk, int size)
 		stack_add_back(stk, tmp);
 		i++;
 	}
-	stk->vars.max_int = nor[size - 1];
+	stk->vars.max_nor = size - 1;
 }
 
 void	set_val(t_stack *a, t_stack *b)
 {
+	int	bit;
+	int	max_nor;
+
+	bit = 0;
+	max_nor = a->vars.max_nor;
 	a->name = 'a';
 	b->name = 'b';
-	a->size = 0;
 	b->size = 0;
-	a->top = NULL;
 	b->top = NULL;
+	while (max_nor)
+	{
+		max_nor /= 2;
+		bit++;
+	}
+	a->vars.max_bit = bit;
+	b->vars.max_bit = bit;
+	b->vars.max_nor = a->vars.max_nor;
 }
 
 void	push_swap_init(char **inp, int argc, t_stack *a, t_stack *b)
@@ -107,10 +118,12 @@ void	push_swap_init(char **inp, int argc, t_stack *a, t_stack *b)
 	int	*arr;
 	int	*nor;
 
-	set_val(a, b);
+	a->size = 0;
+	a->top = NULL;
 	arr = check_int(inp, argc);
 	nor = bub_sort(arr, argc);
 	fill_stack(arr, nor, a, argc);
+	set_val(a, b);
 	free(arr);
 	free(nor);
 }

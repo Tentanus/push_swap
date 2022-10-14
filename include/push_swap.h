@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/01 17:59:48 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/13 22:00:57 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/14 18:04:20 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@
 
 typedef struct s_node {
 	int				i_val;
-	size_t			n_val;
+	unsigned int	n_val;
 	struct s_node	*next;
 }	t_node;
 
 typedef struct s_vars {
-	int		max_int;
+	int		max_nor;
 	int		max_bit;
 }	t_vars;
 
@@ -45,6 +45,7 @@ typedef struct s_stack {
 
 void	push_swap_init(char **inp, int argc, t_stack *a, t_stack *b);
 void	push_swap_exit(void);
+void	push_swap_sort(t_stack *a, t_stack *b);
 
 // utils
 void	bub_swap(int *a, int *b);

@@ -6,36 +6,39 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 14:25:58 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/13 22:41:06 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/14 12:49:25 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 #include <list_utils.h>
 
-void	swap(t_stack *stack)
+void	swap(t_stack *stk)
 {
 	t_node	*node1;
 	t_node	*node2;
-	t_node	*node3;
 	t_node	*last;
 
-	if (stack->size < 2 && ft_printf("swap: %c->size < 2\n", stack->name))
+	if (stk->size < 2 && ft_printf("swap: %c->size < 2\n", stk->name))
 		return ;
-	node1 = stack->top;
+	if (stk->size == 2)
+	{
+		stk->top = stk->top->next;
+		return ;
+	}
+	node1 = stk->top;
 	node2 = node1->next;
-	node3 = node2->next;
-	last = stack_last(stack);
-	stack->top = node2;
+	last = stack_last(stk);
+	stk->top = node2;
+	node1->next = node2->next;
 	node2->next = node1;
-	node1->next = node3;
 	last->next = node2;
 }
 
-void	swapswap(t_stack *stack_1, t_stack *stack_2)
+void	swapswap(t_stack *stk_1, t_stack *stk_2)
 {
-	swap(stack_1);
-	swap(stack_2);
+	swap(stk_1);
+	swap(stk_2);
 }
 
 // Take car iwth SWAP it doesn't work with < 3 Items

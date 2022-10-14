@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/01 17:54:19 by mweverli      #+#    #+#                  #
-#    Updated: 2022/10/13 22:33:21 by mweverli      ########   odam.nl          #
+#    Updated: 2022/10/14 17:58:43 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC			:=	ush_swap/push_swap_exit.c \
 				push_swap/push_swap_sort.c \
 				operations/op_swap.c \
 				operations/op_push.c \
+				operations/op_rotate.c \
 				utils/list_utils.c \
 				utils/stack_check.c
 
