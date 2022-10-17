@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/01 17:54:19 by mweverli      #+#    #+#                  #
-#    Updated: 2022/10/14 17:58:43 by mweverli      ########   odam.nl          #
+#    Updated: 2022/10/17 22:55:45 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ LIB_DIR		:=	./lib
 SRC			:=	ush_swap/push_swap_exit.c \
 				push_swap/push_swap_init.c \
 				push_swap/push_swap_init_utils.c \
+				push_swap/push_swap_quick_sort.c \
 				push_swap/push_swap_sort.c \
 				operations/op_swap.c \
 				operations/op_push.c \
@@ -31,12 +32,8 @@ SRC			:=	ush_swap/push_swap_exit.c \
 				utils/list_utils.c \
 				utils/stack_check.c
 
-ifndef TEST
-SRC			+=	push_swap/push_swap.c
-else
-SRC			+=	tester/test_main.c \
+SRC			+=	push_swap/push_swap.c \
 				tester/test_print.c
-endif
 
 OBJ			:=	$(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o)))
 

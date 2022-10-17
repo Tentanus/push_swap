@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/01 17:59:48 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/14 18:04:20 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/17 23:00:55 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ typedef struct s_stack {
 	t_vars	vars;
 }	t_stack;
 
-
 // FUNCTIONS
 
 void	push_swap_init(char **inp, int argc, t_stack *a, t_stack *b);
@@ -50,26 +49,16 @@ void	push_swap_sort(t_stack *a, t_stack *b);
 // utils
 void	bub_swap(int *a, int *b);
 int		int_arr_cmp(int *inp, int val, int size);
-
-// stack_check
 int		check_stack(t_stack *a, t_stack *b);
 
-#endif
+// SORTER
+void	sort_2(t_stack *a);
+void	sort_3(t_stack *a);
+void	sort_4(t_stack *a, t_stack *b);
+void	sort_5(t_stack *a, t_stack *b);
+void	sort_radix(t_stack *a, t_stack *B);
 
-/*
- * Redix sort
- * Bubble sort
- *
- * Bitshifting
- *
- *
- * Allowed functions
- * read, write		unistd.h
- * malloc free		stdlib.h
- * exit				stdlib.h
- *
- *
- * datastructure:
- * stacks consist of a linkd list of t_nodes
- *
- */
+// TEST FUNCTION
+void	print_stkstk(t_stack a, t_stack b, int v);
+
+#endif

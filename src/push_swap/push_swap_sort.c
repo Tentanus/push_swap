@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/13 20:43:05 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/14 18:04:18 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/17 22:57:17 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 #include <list_utils.h>
 #include <operations.h>
 
-//remove print functions
-void	print_stkstk(t_stack a, t_stack b, int v);
-
-void	sort_decide(t_stack *a, t_stack *b, int bit)
+void	decide_radix(t_stack *a, t_stack *b, int bit)
 {
 	int		size;
 	t_node	*tmp_a;
@@ -27,13 +24,13 @@ void	sort_decide(t_stack *a, t_stack *b, int bit)
 	{
 		tmp_a = a->top;
 		if ((tmp_a->n_val >> bit) & 1)
-			rotate(a);
+			rotate(a, 1);
 		else
 			push(a, b);
 	}
 }
 
-void	push_swap_sort(t_stack *a, t_stack *b)
+void	sort_radix(t_stack *a, t_stack *b)
 {
 	int	bit;
 	int	bit_max;
@@ -42,11 +39,37 @@ void	push_swap_sort(t_stack *a, t_stack *b)
 	bit = 0;
 	while (bit <= bit_max)
 	{
-	ft_printf("run %d\n", bit);
-		sort_decide(a, b, bit);
-		print_stkstk(*a, *b, 0);
+		decide_radix(a, b, bit);
 		while (b->top != NULL)
 			push(b, a);
 		bit++;
+		if (check_stack(a, b))
+			break ;
 	}
+}
+
+void	sort_2(t_stack *a)
+{
+	size_t	n1;
+	size_t	n2;
+
+	n1 = a->top->n_val;
+	n2 = a->top->next->n_val;
+	if (n1 > n2)
+		swap(a, 1);
+	return ;
+}
+
+void	push_swap_sort(t_stack *a, t_stack *b)
+{
+	if (a->size == 2)
+		sort_2(a);
+	else if (a->size == 3)
+		sort_3(a);
+	else if (a->size == 4)
+		sort_4(a, b);
+	else if (a->size == 5)
+		sort_5(a, b);
+	else
+		sort_radix(a, b);
 }

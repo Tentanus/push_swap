@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:45:50 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/13 22:38:21 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/17 16:46:32 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	push(t_stack *from, t_stack *to)
 	from->top = from->top->next;
 	f_last->next = from->top;
 	from->size--;
+	ft_printf("p%c\n", to->name);
 	if (from->size == 0)
 		from->top = NULL;
 	to->size++;

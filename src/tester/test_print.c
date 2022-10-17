@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   test_print.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: mweverli <mweverli@student.codam.n>          +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/10/16 12:25:36 by mweverli      #+#    #+#                 */
+/*   Updated: 2022/10/17 12:45:31 by mweverli      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include <push_swap.h>
 
@@ -16,8 +28,8 @@ void	print_stkstk(t_stack a, t_stack b, int v)
 	i_2 = ft_ternary(a_s > b_s, a_s - i, b_s - i);
 	if (a_s == b_s)
 	{
-		i = a.size;
-		i_2 = 0;
+		i_2 = a.size;
+		i = 0;
 	}
 	tmp_a = a.top;
 	tmp_b = b.top;
@@ -28,7 +40,7 @@ void	print_stkstk(t_stack a, t_stack b, int v)
 		ft_printf("size:\t%d\t\t\t\t%d\n", a.size, b.size);
 		ft_printf("nor/bit: %d / %d\n", a.vars.max_nor, a.vars.max_bit);
 	}
-	ft_printf("decimal\tbinary\t\t\t\tdecimal\tbinary\n");
+//	ft_printf("decimal\tbinary\t\t\t\tdecimal\tbinary\n");
 	while (i_2)
 	{
 		ft_printf("%d\t%b\t\t%d\t%b\n", tmp_a->i_val, tmp_a->n_val, tmp_b->i_val, tmp_b->n_val);
@@ -48,5 +60,6 @@ void	print_stkstk(t_stack a, t_stack b, int v)
 		tmp_b = tmp_b->next;
 		i--;
 	}
+	ft_printf("\t\t\t=== ENDPRINT ===\n");
 	return ;
 }

@@ -6,14 +6,14 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 14:25:58 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/14 12:49:25 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/17 16:59:27 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 #include <list_utils.h>
 
-void	swap(t_stack *stk)
+void	swap(t_stack *stk, int v)
 {
 	t_node	*node1;
 	t_node	*node2;
@@ -21,6 +21,8 @@ void	swap(t_stack *stk)
 
 	if (stk->size < 2 && ft_printf("swap: %c->size < 2\n", stk->name))
 		return ;
+	if (v)
+		ft_printf("s%c\n", stk->name);
 	if (stk->size == 2)
 	{
 		stk->top = stk->top->next;
@@ -37,8 +39,7 @@ void	swap(t_stack *stk)
 
 void	swapswap(t_stack *stk_1, t_stack *stk_2)
 {
-	swap(stk_1);
-	swap(stk_2);
+	swap(stk_1, 0);
+	swap(stk_2, 0);
+	ft_printf("ss\n");
 }
-
-// Take car iwth SWAP it doesn't work with < 3 Items
