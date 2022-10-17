@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/01 17:54:19 by mweverli      #+#    #+#                  #
-#    Updated: 2022/10/17 22:55:45 by mweverli      ########   odam.nl          #
+#    Updated: 2022/10/18 00:23:29 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRC_DIR		:=	./src
 INC_DIR		:=	./include
 LIB_DIR		:=	./lib
 
-SRC			:=	ush_swap/push_swap_exit.c \
+SRC			:=	push_swap/push_swap.c \
+				push_swap/push_swap_exit.c \
 				push_swap/push_swap_init.c \
 				push_swap/push_swap_init_utils.c \
 				push_swap/push_swap_quick_sort.c \
@@ -31,9 +32,6 @@ SRC			:=	ush_swap/push_swap_exit.c \
 				operations/op_rotate.c \
 				utils/list_utils.c \
 				utils/stack_check.c
-
-SRC			+=	push_swap/push_swap.c \
-				tester/test_print.c
 
 OBJ			:=	$(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o)))
 
@@ -67,7 +65,7 @@ endif
 LIB			:=
 
 CC			:=	gcc
-CFL			:=	-Wall -Werror -Wextra -g#fsanitize=address
+CFL			:=	-Wall -Werror -Wextra -fsanitize=address
 COMPILE		:=	$(CC) $(CFL)
 
 #========================================#
