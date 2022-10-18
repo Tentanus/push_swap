@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:48:51 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/14 17:54:52 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/18 19:06:21 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static int	*check_int(char **inp, int argc)
 	while (index < argc)
 	{
 		i_str = 0;
+		if (inp[index][i_str] == '-' && inp[index][i_str + 1] == '\0')
+			push_swap_exit();
 		while (inp[index][i_str])
 		{
 			if (!ft_isdigit(inp[index][i_str]) && inp[index][i_str] != '-')

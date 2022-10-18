@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/13 20:43:05 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/17 22:57:17 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/18 17:01:28 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ void	sort_2(t_stack *a)
 
 void	push_swap_sort(t_stack *a, t_stack *b)
 {
-	if (a->size == 2)
+	if (a->size == 1)
+		return ;
+	else if (a->size == 2)
 		sort_2(a);
 	else if (a->size == 3)
 		sort_3(a);
