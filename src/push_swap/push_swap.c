@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/01 17:59:34 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/18 19:07:04 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/18 19:09:30 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,11 @@ int	main(int argc, char **argv)
 		return (1);
 	push_swap_init((argv + 1), (argc - 1), &a, &b);
 	if (check_stack(&a, &b))
-			{
-				push_swap_free(&a);
-				return (0);
-			}
+	{
+		push_swap_free(&a);
+		return (0);
+	}
 	push_swap_sort(&a, &b);
 	push_swap_free(&a);
 	return (0);
 }
-
-/*
-edge case:
-./push_swap - 23 52
-./push_swap 1 2 3 4 5 6
-./push_swap 1
-
-*/
