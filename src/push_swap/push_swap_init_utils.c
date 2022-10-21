@@ -6,13 +6,14 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 14:13:11 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/12 20:49:29 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/21 19:40:32 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <push_swap.h>
 #include <limits.h>
 
-void	bub_swap(int *a, int *b)
+static void	bub_swap(int *a, int *b)
 {
 	int	tmp;
 
@@ -21,16 +22,30 @@ void	bub_swap(int *a, int *b)
 	*b = tmp;
 }
 
-int	int_arr_cmp(int *inp, int val, int size)
+int	*bub_sort(int *arr, int size)
 {
 	int	i;
+	int	*nor;
 
 	i = 0;
+	nor = ft_calloc(size, sizeof(int));
+	if (!nor)
+		push_swap_exit();
 	while (i < size)
 	{
-		if (val == inp[i])
-			return (1);
+		nor[i] = arr[i];
 		i++;
 	}
-	return (0);
+	while (size)
+	{
+		i = 0;
+		while (i < (size - 1))
+		{
+			if (nor[i] > nor[i + 1])
+				bub_swap(&nor[i], &nor[i + 1]);
+			i++;
+		}
+		size--;
+	}
+	return (nor);
 }

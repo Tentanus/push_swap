@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/01 17:59:48 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/17 23:00:55 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/21 19:40:40 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,8 @@ void	push_swap_exit(void);
 void	push_swap_sort(t_stack *a, t_stack *b);
 
 // utils
-void	bub_swap(int *a, int *b);
-int		int_arr_cmp(int *inp, int val, int size);
 int		check_stack(t_stack *a, t_stack *b);
+int		*bub_sort(int *arr, int size);
 
 // SORTER
 void	sort_2(t_stack *a);

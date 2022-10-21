@@ -6,36 +6,29 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:48:51 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/18 19:06:21 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/21 19:40:34 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 #include <list_utils.h>
 
-int	*bub_sort(int *arr, int size)
+static int	check_str(char *str)
 {
 	int	i;
-	int	*nor;
 
-	i = -1;
-	nor = ft_calloc(size, sizeof(int));
-	if (!nor)
-		push_swap_exit();
-	while (++i < size)
-		nor[i] = arr[i];
-	while (size)
+	i = 0;
+	if (str[i] == '-')
+		i++;
+	if (str[i] == '\0')
+		return (0);
+	while (str[i])
 	{
-		i = 0;
-		while (i < (size - 1))
-		{
-			if (nor[i] > nor[i + 1])
-				bub_swap(&nor[i], &nor[i + 1]);
-			i++;
-		}
-		size--;
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
 	}
-	return (nor);
+	return (1);
 }
 
 static int	*check_int(char **inp, int argc)
@@ -50,14 +43,8 @@ static int	*check_int(char **inp, int argc)
 	while (index < argc)
 	{
 		i_str = 0;
-		if (inp[index][i_str] == '-' && inp[index][i_str + 1] == '\0')
+		if (!(check_str(inp[index])))
 			push_swap_exit();
-		while (inp[index][i_str])
-		{
-			if (!ft_isdigit(inp[index][i_str]) && inp[index][i_str] != '-')
-				push_swap_exit();
-			i_str++;
-		}
 		arr[index] = ft_atoi(inp[index]);
 		if (errno != 0)
 			push_swap_exit();

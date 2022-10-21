@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/01 17:54:19 by mweverli      #+#    #+#                  #
-#    Updated: 2022/10/18 00:23:29 by mweverli      ########   odam.nl          #
+#    Updated: 2022/10/21 19:47:36 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRC			:=	push_swap/push_swap.c \
 				operations/op_push.c \
 				operations/op_rotate.c \
 				utils/list_utils.c \
-				utils/stack_check.c
+				utils/stack_check.c \
+				tester/test_print.c
 
 OBJ			:=	$(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o)))
 

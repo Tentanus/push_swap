@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/17 19:16:02 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/17 22:56:50 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/21 19:47:31 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,16 +80,19 @@ void	sort_3(t_stack *a)
 	}
 	if (n1 < n2 && n1 > n3)
 		rev_rotate(a, 1);
-	if (n1 < n2 && n1 < n3)
+	if (n1 < n2 && n2 < n3)
 	{
 		rev_rotate(a, 1);
 		swap(a, 1);
 	}
 }
+//edge case 1 4 5 2 3
+//test more
 
 void	sort_4(t_stack *a, t_stack *b)
 {
 	push_lowest(a, b);
+	print_stkstk(*a, *b, 0);
 	sort_3(a);
 	push(b, a);
 }
