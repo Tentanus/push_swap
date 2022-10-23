@@ -9,7 +9,6 @@
 #    Updated: 2022/10/21 19:47:36 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
-
 #========================================#
 #=========  GENERAL VARIABLES:  =========#
 #========================================#
@@ -31,8 +30,7 @@ SRC			:=	push_swap/push_swap.c \
 				operations/op_push.c \
 				operations/op_rotate.c \
 				utils/list_utils.c \
-				utils/stack_check.c \
-				tester/test_print.c
+				utils/stack_check.c 
 
 OBJ			:=	$(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o)))
 
@@ -56,17 +54,13 @@ RESET	:= \033[0m
 
 #============= COMPILATION ==============#
 
-HEADER		:=	-I $(INC_DIR)\
+INCLUDE		:=	-I $(INC_DIR)\
 				-I $(LIB_LIBFT)/include
-
-ifdef TEST
-HEADER		+=	-I ./src/tester/include
-endif
 
 LIB			:=
 
 CC			:=	gcc
-CFL			:=	-Wall -Werror -Wextra -fsanitize=address
+CFL			:=	-Wall -Werror -Wextra
 COMPILE		:=	$(CC) $(CFL)
 
 #========================================#
@@ -79,11 +73,11 @@ $(OBJ_DIR):
 	@mkdir -p $@
 
 $(NAME): $(LIB_LIST) $(OBJ) 
-	@$(COMPILE) $^ $(HEADER) -o $(NAME) $(LIB) $(LIB_LIST) 
+	@$(COMPILE) $^ $(INCLUDE) -o $(NAME) $(LIB_LIST) 
 	@echo "$(CYAN)$(BOLD)COMPILING COMPLETE$(RESET)"
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/*/%.c | $(OBJ_DIR)
-	@$(COMPILE) -o $@ -c $< $(HEADER)
+	@$(COMPILE) -o $@ -c $< $(INCLUDE)
 	@echo "$(CYAN)COMPILING: $(notdir $<)$(RESET)"
 
 flclean: lclean fclean
@@ -102,9 +96,6 @@ fclean: clean
 
 re: fclean all
 
-tclean: fclean
-	rm -f $(EXE)
-
 #========================================#
 #============== LIBRARIES ===============#
 #========================================#
@@ -116,6 +107,6 @@ $(LIB_LIB_ARC):
 #============ MISCELLANEOUS =============#
 #========================================#
 
-.PHONY: all clean fclean tclean re test
+.PHONY: all clean fclean tclean re
 
-.DEFAULT_GOAL := all
+.DEFAULT_GOAL	:= all
