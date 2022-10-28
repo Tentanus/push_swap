@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/13 20:43:05 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/18 17:01:28 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/28 19:25:00 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	decide_radix(t_stack *a, t_stack *b, int bit)
 		if ((tmp_a->n_val >> bit) & 1)
 			rotate(a, 1);
 		else
-			push(a, b);
+			push(a, b, 1);
 	}
 }
 
@@ -41,7 +41,7 @@ void	sort_radix(t_stack *a, t_stack *b)
 	{
 		decide_radix(a, b, bit);
 		while (b->top != NULL)
-			push(b, a);
+			push(b, a, 1);
 		bit++;
 		if (check_stack(a, b))
 			break ;

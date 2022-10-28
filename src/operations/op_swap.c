@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 14:25:58 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/17 16:59:27 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/28 19:13:19 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ void	swap(t_stack *stk, int v)
 	last->next = node2;
 }
 
-void	swapswap(t_stack *stk_1, t_stack *stk_2)
+void	swapswap(t_stack *stk_1, t_stack *stk_2, int v)
 {
 	swap(stk_1, 0);
 	swap(stk_2, 0);
-	ft_printf("ss\n");
+	if (v)
+		ft_printf("ss\n");
 }

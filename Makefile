@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/01 17:54:19 by mweverli      #+#    #+#                  #
-#    Updated: 2022/10/21 19:47:36 by mweverli      ########   odam.nl          #
+#    Updated: 2022/10/28 20:03:11 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@
 #========================================#
 
 NAME		:=	push_swap
+BONUS		:=	checker
 
 OBJ_DIR		:=	./OBJ
 SRC_DIR		:=	./src
@@ -34,9 +35,21 @@ SRC			:=	push_swap/push_swap.c \
 				utils/stack_check.c \
 				tester/test_print.c
 
+SRC_BONUS	:=	checker/checker.c \
+				push_swap/push_swap_exit.c \
+				push_swap/push_swap_init.c \
+				push_swap/push_swap_init_utils.c \
+				operations/op_push.c \
+				operations/op_rotate.c \
+				operations/op_swap.c \
+				utils/list_utils.c \
+				utils/stack_check.c
+
 OBJ			:=	$(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o)))
+OBJ_BONUS	:=	$(addprefix $(OBJ_DIR)/,$(notdir $(SRC_BONUS:.c=.o)))
 
 SRC			:=	$(addprefix $(SRC_DIR)/,$(SRC))
+SRC_BONUS	:=	$(addprefix $(SRC_DIR)/,$(SRC_BONUS))
 
 #============== LIBRARIES ===============#
 
@@ -59,14 +72,10 @@ RESET	:= \033[0m
 HEADER		:=	-I $(INC_DIR)\
 				-I $(LIB_LIBFT)/include
 
-ifdef TEST
-HEADER		+=	-I ./src/tester/include
-endif
-
 LIB			:=
 
 CC			:=	gcc
-CFL			:=	-Wall -Werror -Wextra -fsanitize=address
+CFL			:=	-Wall -Werror -Wextra -g
 COMPILE		:=	$(CC) $(CFL)
 
 #========================================#
@@ -79,8 +88,14 @@ $(OBJ_DIR):
 	@mkdir -p $@
 
 $(NAME): $(LIB_LIST) $(OBJ) 
-	@$(COMPILE) $^ $(HEADER) -o $(NAME) $(LIB) $(LIB_LIST) 
-	@echo "$(CYAN)$(BOLD)COMPILING COMPLETE$(RESET)"
+	@$(COMPILE) $(HEADER) -o $(NAME) $(LIB) $^ 
+	@echo "$(CYAN)$(BOLD)COMPILING $(NAME) COMPLETE$(RESET)"
+
+bonus: $(BONUS)
+
+$(BONUS): $(LIB_LIST) $(OBJ_BONUS)
+	@$(COMPILE) $(HEADER) -o $(BONUS) $(LIB) $^ 
+	@echo "$(CYAN)$(BOLD)COMPILING $(BONUS) COMPLETE$(RESET)"
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/*/%.c | $(OBJ_DIR)
 	@$(COMPILE) -o $@ -c $< $(HEADER)
@@ -99,11 +114,9 @@ clean:
 
 fclean: clean 
 	@rm -f $(NAME)
+	@rm -f $(BONUS)
 
 re: fclean all
-
-tclean: fclean
-	rm -f $(EXE)
 
 #========================================#
 #============== LIBRARIES ===============#
