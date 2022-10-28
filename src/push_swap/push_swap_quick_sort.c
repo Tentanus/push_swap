@@ -69,22 +69,22 @@ void	sort_3(t_stack *a)
 	n1 = a->top->n_val;
 	n2 = a->top->next->n_val;
 	n3 = a->top->next->next->n_val;
-	if (n1 > n2 && n1 < n3)
-		swap(a, 1);
-	if (n1 > n2 && n2 < n3)
-		rotate(a, 1);
-	if (n1 > n2 && n2 > n3)
-	{
-		rotate(a, 1);
-		swap(a, 1);
-	}
-	if (n1 < n2 && n1 > n3)
-		rev_rotate(a, 1);
-	if (n1 < n2 && n2 < n3)
+	if (n1 < n2 && n2 > n3 && n1 < n3)
 	{
 		rev_rotate(a, 1);
 		swap(a, 1);
 	}
+	else if(n1 < n2 && n2 > n3 && n1 > n3)
+		rev_rotate(a, 1);
+	else if(n1 > n2 && n2 > n3 && n1 > n3)
+	{
+		rotate(a, 1);
+		swap(a, 1);
+	}
+	else if(n1 > n2 && n2 < n3 && n1 < n3)
+		swap(a, 1);
+	else if(n1 > n2 && n2 < n3 && n1 > n3)
+		rotate(a, 1);
 }
 
 void	sort_4(t_stack *a, t_stack *b)

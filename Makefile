@@ -6,10 +6,9 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/01 17:54:19 by mweverli      #+#    #+#                  #
-#    Updated: 2022/10/28 20:03:11 by mweverli      ########   odam.nl          #
+#    Updated: 2022/10/28 20:09:40 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
-
 #========================================#
 #=========  GENERAL VARIABLES:  =========#
 #========================================#
@@ -32,8 +31,7 @@ SRC			:=	push_swap/push_swap.c \
 				operations/op_push.c \
 				operations/op_rotate.c \
 				utils/list_utils.c \
-				utils/stack_check.c \
-				tester/test_print.c
+				utils/stack_check.c 
 
 SRC_BONUS	:=	checker/checker.c \
 				push_swap/push_swap_exit.c \
@@ -69,7 +67,7 @@ RESET	:= \033[0m
 
 #============= COMPILATION ==============#
 
-HEADER		:=	-I $(INC_DIR)\
+INCLUDE		:=	-I $(INC_DIR)\
 				-I $(LIB_LIBFT)/include
 
 LIB			:=
@@ -98,7 +96,7 @@ $(BONUS): $(LIB_LIST) $(OBJ_BONUS)
 	@echo "$(CYAN)$(BOLD)COMPILING $(BONUS) COMPLETE$(RESET)"
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/*/%.c | $(OBJ_DIR)
-	@$(COMPILE) -o $@ -c $< $(HEADER)
+	@$(COMPILE) -o $@ -c $< $(INCLUDE)
 	@echo "$(CYAN)COMPILING: $(notdir $<)$(RESET)"
 
 flclean: lclean fclean
@@ -129,6 +127,6 @@ $(LIB_LIB_ARC):
 #============ MISCELLANEOUS =============#
 #========================================#
 
-.PHONY: all clean fclean tclean re test
+.PHONY: all clean fclean tclean re
 
-.DEFAULT_GOAL := all
+.DEFAULT_GOAL	:= all

@@ -35,14 +35,12 @@ static int	*check_int(char **inp, int argc)
 {
 	int	*arr;
 	int	index;
-	int	i_str;
 
 	arr = ft_calloc(argc, sizeof(int));
 	index = 0;
 	errno = 0;
 	while (index < argc)
 	{
-		i_str = 0;
 		if (!(check_str(inp[index])))
 			push_swap_exit();
 		arr[index] = ft_atoi(inp[index]);
