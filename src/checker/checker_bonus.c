@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 13:59:55 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/30 11:44:13 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/30 13:08:50 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	**read_input(void)
 	char	buff[101];
 	int		read_ret;
 
-	inst = malloc(sizeof(char) * 1);
+	inst = ft_calloc(sizeof(char), 1);
 	while (1)
 	{
 		read_ret = read(0, buff, 100);
@@ -54,6 +54,7 @@ char	**read_input(void)
 	ret = ft_split(inst, '\n');
 	if (!ret)
 		push_swap_exit();
+	free(inst);
 	return (ret);
 }
 
@@ -110,12 +111,6 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (1);
 	push_swap_init((argv + 1), (argc - 1), &a, &b);
-	if (check_stack(&a, &b))
-	{
-		push_swap_free(&a);
-		write(1, "OK\n", 3);
-		return (0);
-	}
 	checker(&a, &b);
 	if (check_stack(&a, &b))
 		write(1, "OK\n", 3);

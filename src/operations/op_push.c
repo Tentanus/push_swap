@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:45:50 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/28 19:13:20 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/30 12:46:10 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	push(t_stack *from, t_stack *to, int v)
 {
 	t_node	*node;
 
-	if (from->top == NULL && ft_printf("push:(%c)->top = NULL\n", from->name))
+	if (from->top == NULL)
 		return ;
 	node = stack_take_front(from);
 	if (v)

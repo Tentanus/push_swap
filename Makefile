@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/01 17:54:19 by mweverli      #+#    #+#                  #
-#    Updated: 2022/10/30 11:42:23 by mweverli      ########   odam.nl          #
+#    Updated: 2022/10/30 13:08:52 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ INCLUDE		:=	-I $(INC_DIR)\
 LIB			:=
 
 CC			:=	gcc
-CFL			:=	-Wall -Werror -Wextra -g
+CFL			:=	-Wall -Werror -Wextra -fsanitize=address
 COMPILE		:=	$(CC) $(CFL)
 
 #========================================#
@@ -100,12 +100,6 @@ $(OBJ_DIR)/%.o:$(SRC_DIR)/*/%.c | $(OBJ_DIR)
 	@$(COMPILE) -o $@ -c $< $(INCLUDE)
 	@echo "$(CYAN)COMPILING: $(notdir $<)$(RESET)"
 
-flclean: lclean fclean
-
-lclean:
-	@make -C $(LIB_LIBFT) clean
-	@$(RM) $(LIB_LIB_ARC)
-
 clean:
 	@mkdir -p $(OBJ_DIR)
 	@rm -rf $(OBJ_DIR)
@@ -114,6 +108,12 @@ clean:
 fclean: clean 
 	@rm -f $(NAME)
 	@rm -f $(BONUS)
+
+lclean:
+	@make -C $(LIB_LIBFT) clean
+	@$(RM) $(LIB_LIB_ARC)
+
+flclean: lclean fclean
 
 re: fclean all
 
@@ -128,6 +128,6 @@ $(LIB_LIB_ARC):
 #============ MISCELLANEOUS =============#
 #========================================#
 
-.PHONY: all clean fclean tclean re
+.PHONY: all bonus clean fclean lclean flclean re
 
 .DEFAULT_GOAL	:= all

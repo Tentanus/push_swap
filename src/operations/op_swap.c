@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 14:25:58 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/28 19:13:19 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/30 12:46:27 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	swap(t_stack *stk, int v)
 	t_node	*node2;
 	t_node	*last;
 
-	if (stk->size < 2 && ft_printf("swap: %c->size < 2\n", stk->name))
+	if (stk->size < 2)
 		return ;
 	if (v)
 		ft_printf("s%c\n", stk->name);
