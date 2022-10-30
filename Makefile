@@ -6,15 +6,16 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/01 17:54:19 by mweverli      #+#    #+#                  #
-#    Updated: 2022/10/28 20:09:40 by mweverli      ########   odam.nl          #
+#    Updated: 2022/10/30 11:42:23 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
+
 #========================================#
 #=========  GENERAL VARIABLES:  =========#
 #========================================#
 
-NAME		:=	push_swap
-BONUS		:=	checker
+NAME		:=	./push_swap
+BONUS		:=	./checker
 
 OBJ_DIR		:=	./OBJ
 SRC_DIR		:=	./src
@@ -33,7 +34,7 @@ SRC			:=	push_swap/push_swap.c \
 				utils/list_utils.c \
 				utils/stack_check.c 
 
-SRC_BONUS	:=	checker/checker.c \
+SRC_BONUS	:=	checker/checker_bonus.c \
 				push_swap/push_swap_exit.c \
 				push_swap/push_swap_init.c \
 				push_swap/push_swap_init_utils.c \
@@ -86,14 +87,14 @@ $(OBJ_DIR):
 	@mkdir -p $@
 
 $(NAME): $(LIB_LIST) $(OBJ) 
-	@$(COMPILE) $(HEADER) -o $(NAME) $(LIB) $^ 
-	@echo "$(CYAN)$(BOLD)COMPILING $(NAME) COMPLETE$(RESET)"
+	@$(COMPILE) $(INCLUDE) $(LIB) -o $(NAME) $^ 
+	@echo "$(GREEN)$(BOLD)COMPILING COMPLETE: $(NAME)$(RESET)"
 
 bonus: $(BONUS)
 
 $(BONUS): $(LIB_LIST) $(OBJ_BONUS)
-	@$(COMPILE) $(HEADER) -o $(BONUS) $(LIB) $^ 
-	@echo "$(CYAN)$(BOLD)COMPILING $(BONUS) COMPLETE$(RESET)"
+	@$(COMPILE) $(INCLUDE) $(LIB) -o $(BONUS) $^ 
+	@echo "$(GREEN)$(BOLD)COMPILING COMPLETE: $(BONUS) $(RESET)"
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/*/%.c | $(OBJ_DIR)
 	@$(COMPILE) -o $@ -c $< $(INCLUDE)
@@ -108,7 +109,7 @@ lclean:
 clean:
 	@mkdir -p $(OBJ_DIR)
 	@rm -rf $(OBJ_DIR)
-	@echo "$(RED)$(BOLD)Cleaning $(NAME)$(RESET)"
+	@echo "$(RED)$(BOLD)Cleaning $(notdir $(NAME))$(RESET)"
 
 fclean: clean 
 	@rm -f $(NAME)
