@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/01 17:54:19 by mweverli      #+#    #+#                  #
-#    Updated: 2022/10/30 13:08:52 by mweverli      ########   odam.nl          #
+#    Updated: 2022/10/30 20:28:58 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ INCLUDE		:=	-I $(INC_DIR)\
 LIB			:=
 
 CC			:=	gcc
-CFL			:=	-Wall -Werror -Wextra -fsanitize=address
+CFL			:=	-Wall -Werror -Wextra -g
 COMPILE		:=	$(CC) $(CFL)
 
 #========================================#
@@ -88,13 +88,13 @@ $(OBJ_DIR):
 
 $(NAME): $(LIB_LIST) $(OBJ) 
 	@$(COMPILE) $(INCLUDE) $(LIB) -o $(NAME) $^ 
-	@echo "$(GREEN)$(BOLD)COMPILING COMPLETE: $(NAME)$(RESET)"
+	@echo "$(GREEN)$(BOLD)======= $(NAME) COMPILED =======$(RESET)"
 
 bonus: $(BONUS)
 
 $(BONUS): $(LIB_LIST) $(OBJ_BONUS)
 	@$(COMPILE) $(INCLUDE) $(LIB) -o $(BONUS) $^ 
-	@echo "$(GREEN)$(BOLD)COMPILING COMPLETE: $(BONUS) $(RESET)"
+	@echo "$(GREEN)$(BOLD)======== $(BONUS) COMPILED ========$(RESET)"
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/*/%.c | $(OBJ_DIR)
 	@$(COMPILE) -o $@ -c $< $(INCLUDE)
