@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:48:51 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/30 20:29:03 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/10/31 19:27:30 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static void	fill_stack(int *inp, int *nor, t_stack *stk, int size)
 	stk->vars.max_nor = size - 1;
 }
 
-void	set_val(t_stack *a, t_stack *b)
+static void	set_val(t_stack *a, t_stack *b)
 {
 	int	bit;
 	int	max_nor;
@@ -109,6 +109,7 @@ void	push_swap_init(char **inp, int argc, t_stack *a, t_stack *b)
 	a->top = NULL;
 	arr = check_int(inp, argc);
 	nor = bub_sort(arr, argc);
+	check_overflow_duplication(inp, arr);
 	fill_stack(arr, nor, a, argc);
 	set_val(a, b);
 	free(arr);
