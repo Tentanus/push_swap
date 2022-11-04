@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/01 17:54:19 by mweverli      #+#    #+#                  #
-#    Updated: 2022/10/30 20:28:58 by mweverli      ########   odam.nl          #
+#    Updated: 2022/11/04 15:22:06 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,9 @@ SRC_BONUS	:=	checker/checker_bonus.c \
 OBJ			:=	$(addprefix $(OBJ_DIR)/,$(notdir $(SRC:.c=.o)))
 OBJ_BONUS	:=	$(addprefix $(OBJ_DIR)/,$(notdir $(SRC_BONUS:.c=.o)))
 
+DEP			:=	$(OBJ:.o=.d)
+DEP_BONUS	:=	$(OBJ_BONUS:.o=.d)
+
 SRC			:=	$(addprefix $(SRC_DIR)/,$(SRC))
 SRC_BONUS	:=	$(addprefix $(SRC_DIR)/,$(SRC_BONUS))
 
@@ -83,6 +86,9 @@ COMPILE		:=	$(CC) $(CFL)
 
 all: $(NAME)
 
+-include $(DEP)
+-include $(DEP_BONUS)
+
 $(OBJ_DIR):
 	@mkdir -p $@
 
@@ -97,7 +103,7 @@ $(BONUS): $(LIB_LIST) $(OBJ_BONUS)
 	@echo "$(GREEN)$(BOLD)======== $(BONUS) COMPILED ========$(RESET)"
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/*/%.c | $(OBJ_DIR)
-	@$(COMPILE) -o $@ -c $< $(INCLUDE)
+	@$(COMPILE) -o $@ -c $< $(INCLUDE) -MMD
 	@echo "$(CYAN)COMPILING: $(notdir $<)$(RESET)"
 
 clean:

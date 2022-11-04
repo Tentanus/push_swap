@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/28 13:59:55 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/30 13:08:50 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/11/04 15:21:51 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,13 +109,15 @@ int	main(int argc, char **argv)
 	t_stack	b;
 
 	if (argc < 2)
-		return (1);
+		return (-1);
 	push_swap_init((argv + 1), (argc - 1), &a, &b);
 	checker(&a, &b);
 	if (check_stack(&a, &b))
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
+	while (b.size != 0)
+		push(&b, &a, 0);
 	push_swap_free(&a);
 	return (0);
 }

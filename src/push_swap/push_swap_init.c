@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/03 16:48:51 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/31 19:27:30 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/11/03 14:34:11 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ static int	check_str(char *str)
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	if (str[i] == '\0')
+		return (0);
+	while (str[i] == '0')
+		i++;
+	if (ft_strlen(&str[i]) > 10)
 		return (0);
 	while (str[i])
 	{
@@ -109,7 +113,6 @@ void	push_swap_init(char **inp, int argc, t_stack *a, t_stack *b)
 	a->top = NULL;
 	arr = check_int(inp, argc);
 	nor = bub_sort(arr, argc);
-	check_overflow_duplication(inp, arr);
 	fill_stack(arr, nor, a, argc);
 	set_val(a, b);
 	free(arr);

@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 14:13:11 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/10/31 19:27:32 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/11/02 17:56:28 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,24 +48,4 @@ int	*bub_sort(int *arr, int size)
 		size--;
 	}
 	return (nor);
-}
-
-void	check_overflow_duplication(char **inp, int *arr)
-{
-	int		i;
-	int		len;
-	char	*tmp;
-
-	i = 0;
-	while (inp[i])
-	{
-		if (!inp[i] || !arr[i])
-			push-swap_exit();
-		len = ft_strlen(inp[i]);
-		tmp = ft_itoa(arr[i]);
-		if (!ft_strncmp(inp[i], tmp, len))
-			push_swap_exit();
-		free(tmp);
-		i++;
-	}
 }
