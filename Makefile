@@ -6,7 +6,7 @@
 #    By: mweverli <mweverli@student.codam.n>          +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/01 17:54:19 by mweverli      #+#    #+#                  #
-#    Updated: 2022/11/04 15:22:06 by mweverli      ########   odam.nl          #
+#    Updated: 2022/11/09 08:46:23 by mweverli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,8 +77,11 @@ INCLUDE		:=	-I $(INC_DIR)\
 LIB			:=
 
 CC			:=	gcc
-CFL			:=	-Wall -Werror -Wextra -g
+CFL			:=	-Wall -Werror -Wextra #-g
 COMPILE		:=	$(CC) $(CFL)
+
+-include $(DEP)
+-include $(DEP_BONUS)
 
 #========================================#
 #============== RECIPIES  ===============#
@@ -86,25 +89,22 @@ COMPILE		:=	$(CC) $(CFL)
 
 all: $(NAME)
 
--include $(DEP)
--include $(DEP_BONUS)
-
-$(OBJ_DIR):
-	@mkdir -p $@
-
 $(NAME): $(LIB_LIST) $(OBJ) 
-	@$(COMPILE) $(INCLUDE) $(LIB) -o $(NAME) $^ 
+	@$(COMPILE) $(INCLUDE) $(LIB) $^ -o $(NAME) 
 	@echo "$(GREEN)$(BOLD)======= $(NAME) COMPILED =======$(RESET)"
 
 bonus: $(BONUS)
 
 $(BONUS): $(LIB_LIST) $(OBJ_BONUS)
-	@$(COMPILE) $(INCLUDE) $(LIB) -o $(BONUS) $^ 
+	@$(COMPILE) $(INCLUDE) $(LIB) $^ -o $(BONUS) 
 	@echo "$(GREEN)$(BOLD)======== $(BONUS) COMPILED ========$(RESET)"
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/*/%.c | $(OBJ_DIR)
 	@$(COMPILE) -o $@ -c $< $(INCLUDE) -MMD
 	@echo "$(CYAN)COMPILING: $(notdir $<)$(RESET)"
+
+$(OBJ_DIR):
+	@mkdir -p $@
 
 clean:
 	@mkdir -p $(OBJ_DIR)

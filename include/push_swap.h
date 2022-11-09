@@ -6,7 +6,7 @@
 /*   By: mweverli <mweverli@student.codam.n>          +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/01 17:59:48 by mweverli      #+#    #+#                 */
-/*   Updated: 2022/11/02 17:59:10 by mweverli      ########   odam.nl         */
+/*   Updated: 2022/11/09 08:38:26 by mweverli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,5 @@ void	sort_3(t_stack *a);
 void	sort_4(t_stack *a, t_stack *b);
 void	sort_5(t_stack *a, t_stack *b);
 void	sort_radix(t_stack *a, t_stack *B);
-
-// TEST FUNCTION
-void	print_stkstk(t_stack a, t_stack b, int v);
 
 #endif
